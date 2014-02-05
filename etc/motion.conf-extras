@@ -1,0 +1,8 @@
+# Make sure these are set in /etc/motion/motion.conf
+
+ffmpeg_cap_new off
+target_dir /sdcard/motion
+snapshot_filename snapshot
+jpeg_filename %v-%Y%m%d%H%M%S-%q
+on_event_end /usr/local/bin/motion-encode.pl --srcdir /sdcard/motion --destdir /sdcard/www
+
