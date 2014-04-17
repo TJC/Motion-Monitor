@@ -2,8 +2,9 @@
 # An amazingly simple script to view the captured stuff; really worth doing properly later.
 use 5.14.0;
 use warnings;
+our $BASEURL="motion";
 
-chdir "/sdcard/www";
+chdir "/var/www/motion";
 
 print "Content-Type: text/html\n";
 print "Cache-Control: no-cache\n";
@@ -45,7 +46,7 @@ print "
 </head>
 <body>
 <div class='item'>
-<a href='snapshot.jpg'>Latest snapshot</a>
+<a href='$BASEURL/snapshot.jpg'>Latest snapshot</a>
 </div>
 ";
 }
@@ -67,9 +68,9 @@ sub showthumb {
     $minivid = $fullvid;
     $minivid =~ s/\.mp4/_mini\.mp4/;
 
-    print "<div class='item'>$date $time<br><img src='$file' width='640' height='240'><br>\n";
-    print "Video: <a href='$minivid'>Fast preview</a>;\n";
-    print "<a href='$fullvid'>Full size</a>\n";
+    print "<div class='item'>$date $time<br><img src='$BASEURL/$file' width='640' height='240'><br>\n";
+    print "Video: <a href='$BASEURL/$minivid'>Fast preview</a>;\n";
+    print "<a href='$BASEURL/$fullvid'>Full size</a>\n";
     print "</div>\n";
 
 }

@@ -1,8 +1,18 @@
 # Make sure these are set in /etc/motion/motion.conf
 
 ffmpeg_cap_new off
-target_dir /sdcard/motion
+target_dir /tmp/motion
+snapshot_interval 60
 snapshot_filename snapshot
 jpeg_filename %v-%Y%m%d%H%M%S-%q
-on_event_end /usr/local/bin/motion-encode.pl --srcdir /sdcard/motion --destdir /sdcard/www
+on_event_end /usr/local/bin/motion-encode.pl --srcdir /tmp/motion --destdir /var/www/motion
 
+# Probably want to setup width/height/framerate etc too
+
+# Note that if you have multiple cameras, you need to set the target_dir and
+# on_vent_end bits in threadX.conf and use different directories for each.
+
+# I set the capture rate to 2 fps
+# I also adjust the pre-and-post capture values to 4 each (2 seconds)
+# I set the pixel-changed threshold to 5000 on 1280x720 images
+# (use less on lower-res cameras)
