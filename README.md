@@ -15,6 +15,6 @@ Another script is run from cron.daily, which removes old captures after five day
 
 You'll need to install avconv with libx264 support, and imagemagick's convert program.
 
-I think all the Perl libraries used tend to be in core these days, but double check with
-a trial run of the scripts.
+I think most of the Perl libraries used tend to be in core these days, but you'll need
+to aptitude install libfile-find-rule-perl libdatetime-perl
 

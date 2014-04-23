@@ -1,4 +1,4 @@
-#!/usr/local/modern/perl/bin/perl
+#!/usr/bin/perl
 use 5.12.2;
 use strict;
 use warnings;
