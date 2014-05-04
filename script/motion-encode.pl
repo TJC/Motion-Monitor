@@ -74,7 +74,7 @@ $minoutput =~ s/\.mp4/_mini\.mp4/;
 system("nice /usr/bin/avconv -r 8 -i $tmpdir/frame\%04d.jpg -codec:v libx264 -profile:v main -pre:v libx264-faster  -b:v 80k -minrate 40k -maxrate 100k -bufsize 1000k -s 640x240 $destdir/$minoutput");
 syslog("info", "encoded mini video $minoutput");
 
-system("nice /usr/bin/avconv -r 2 -i $tmpdir/frame\%04d.jpg -codec:v libx264 -profile:v main -pre:v libx264-fast -crf 24 -minrate 100k -maxrate 400k -bufsize 1850k -r 2 $tmpdir/$output");
+system("nice /usr/bin/avconv -r 2 -i $tmpdir/frame\%04d.jpg -codec:v libx264 -profile:v main -pre:v libx264-medium -crf 23 -minrate 100k -maxrate 400k -bufsize 1850k -r 2 $tmpdir/$output");
 syslog("info", "encoded full video $output");
 system("/usr/bin/qt-faststart $tmpdir/$output $destdir/$output");
 syslog("info", "ran qt-faststart");
