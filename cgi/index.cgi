@@ -19,10 +19,10 @@ if ($@) {
 }
 
 sub mainbody {
-  my @thumbs = reverse sort grep { ! /snapshot/ } <*.jpg>;
+  my @thumbs = reverse sort grep { ! /camera\d/ } <*.jpg>;
   header();
   my $i = 0;
-  while ($i++ < 10 && @thumbs) {
+  while ($i++ < 12 && @thumbs) {
       showthumb(shift @thumbs);
   }
   footer();
@@ -46,7 +46,10 @@ print "
 </head>
 <body>
 <div class='item'>
-<a href='$BASEURL/snapshot.jpg'>Latest snapshot</a>
+Current snapshot: 
+<a href='$BASEURL/camera1.jpg'>Camera 1</a>
+<a href='$BASEURL/camera2.jpg'>Camera 2</a>
+<a href='$BASEURL/camera3.jpg'>Camera 3</a>
 </div>
 ";
 }
